@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="nuget.config" />
+  </Folder>
+  <Project Path="CK.SessionChannel/CK.SessionChannel.csproj" />
+</Solution>

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Description>Binds the connections of the application-wide WebSocket channel to their user, so that a feature can push a typed message to every connection of a given user. The socket is anonymous and returns a connection identifier; the identity is bound afterwards by an authenticated Cris command carrying that identifier, so no token ever transits through the socket URL.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CK.Cris.Auth" Version="0.43.2--ci.1" />
+        <PackageReference Include="CK.Cris.Typescript" Version="0.55.3--ci.1" />
+        <PackageReference Include="CK.AspNet.WebSocketChannel" Version="21.0.2--ci.7" />
+        <PackageReference Include="CK.TS.AspNet.WebSocketChannel" Version="0.31.3--ci.18" />
+    </ItemGroup>
+
+</Project>
