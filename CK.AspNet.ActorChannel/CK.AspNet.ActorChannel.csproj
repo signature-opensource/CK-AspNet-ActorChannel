@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Description>Binds the connections of the application-wide WebSocket channel to their user, so that a feature can push a typed message to every connection of a given user. The socket is anonymous and returns a connection identifier; the identity is bound afterwards by an authenticated Cris command carrying that identifier, so no token ever transits through the socket URL.</Description>
+        <Description>Binds the connections of the application-wide WebSocket channel to their actor, so that a feature can push a typed message to every connection of a given user. The socket is anonymous and returns a connection identifier; the identity is bound afterwards by an authenticated Cris command carrying that identifier, so no token ever transits through the socket URL.</Description>
     </PropertyGroup>
 
     <ItemGroup>

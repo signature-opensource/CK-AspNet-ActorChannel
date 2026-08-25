@@ -7,24 +7,24 @@ using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace CK.SessionChannel;
+namespace CK.AspNet.ActorChannel;
 
 /// <summary>
 /// Indexes the connections of the channel by the user they have been bound to, so that a message can
 /// reach all the connections of one user at once (several tabs, several devices).
 /// <para>
-/// Handles <see cref="IRegisterSessionCommand"/>: this is where an anonymous socket becomes the socket
+/// Handles <see cref="IRegisterActorChannelCommand"/>: this is where an anonymous socket becomes the socket
 /// of an identified user. The socket itself belongs to <see cref="WebSocketChannelManager"/>; what
 /// lives here is only the identity index, and this feature claims the <see cref="Topic"/> topic on it.
 /// </para>
 /// </summary>
-public sealed class SessionChannelRegistry : IRealObject, ISessionChannelPush
+public sealed class ActorChannelRegistry : IRealObject, IActorChannelPush
 {
     /// <summary>
-    /// The channel topic of the session messages. The TypeScript side matches on this exact string
-    /// (see <c>session-channel.ts</c>).
+    /// The channel topic of the messages pushed to an actor. The TypeScript side matches on this exact string
+    /// (see <c>actor-channel.ts</c>).
     /// </summary>
-    public const string Topic = "CK.SessionChannel";
+    public const string Topic = "CK.AspNet.ActorChannel";
 
     // The connection identifiers of one user. The inner dictionary is a set (its byte value is never
     // read); a user legitimately has several connections at once.
@@ -53,7 +53,7 @@ public sealed class SessionChannelRegistry : IRealObject, ISessionChannelPush
     void OnConnectionClosed( IActivityMonitor monitor, ConnectionClosedEvent e ) => Unindex( e.ConnectionId );
 
     /// <summary>
-    /// Handles <see cref="IRegisterSessionCommand"/>: binds the connection to the calling user.
+    /// Handles <see cref="IRegisterActorChannelCommand"/>: binds the connection to the calling user.
     /// <para>
     /// Reaching this method already means the caller passed every command-handling validator: a user
     /// that some validator refuses (a banished one) never gets its connection bound.
@@ -62,7 +62,7 @@ public sealed class SessionChannelRegistry : IRealObject, ISessionChannelPush
     /// <param name="monitor">The monitor to use.</param>
     /// <param name="command">The registration command.</param>
     [CommandHandler]
-    public void HandleRegisterSession( IActivityMonitor monitor, IRegisterSessionCommand command )
+    public void HandleRegisterActorChannel( IActivityMonitor monitor, IRegisterActorChannelCommand command )
     {
         int actorId = command.ActorId.GetValueOrDefault();
         if( _channel.TryGetConnection( command.ConnectionId, out _ ) is false )
@@ -88,7 +88,7 @@ public sealed class SessionChannelRegistry : IRealObject, ISessionChannelPush
             Unindex( command.ConnectionId );
             Throw.InvalidDataException( $"Connection {command.ConnectionId} does not exist, or is not identified as you." );
         }
-        monitor.Trace( $"Session channel: connection {command.ConnectionId} bound to user {actorId}." );
+        monitor.Trace( $"Actor channel: connection {command.ConnectionId} bound to user {actorId}." );
     }
 
     /// <inheritdoc />

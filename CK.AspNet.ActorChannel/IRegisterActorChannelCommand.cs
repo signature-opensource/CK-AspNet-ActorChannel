@@ -2,7 +2,7 @@ using CK.Auth;
 using CK.Cris;
 using CK.TypeScript;
 
-namespace CK.SessionChannel;
+namespace CK.AspNet.ActorChannel;
 
 /// <summary>
 /// Binds an anonymous WebSocket connection to the user that sends this command.
@@ -19,7 +19,7 @@ namespace CK.SessionChannel;
 /// </para>
 /// </summary>
 [TypeScriptType]
-public interface IRegisterSessionCommand : ICommand, ICommandAuthNormal
+public interface IRegisterActorChannelCommand : ICommand, ICommandAuthNormal
 {
     /// <summary>
     /// The connection identifier the server sent on connect.
