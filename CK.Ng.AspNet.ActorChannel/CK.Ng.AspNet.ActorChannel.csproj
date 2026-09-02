@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Description>Angular support of the actor channel: provides the one ActorChannel of the application and binds it to the authenticated actor. A feature injects it and registers its message types; it never constructs one.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CK.AspNet.ActorChannel\CK.AspNet.ActorChannel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CK.TS.Angular" Version="0.31.3--ci.19" />
+        <PackageReference Include="CK.Ng.AspNet.WebSocketChannel" Version="0.31.3--ci.19" />
+        <!-- NgAuthService: the channel binds an actor, so it has to know who is authenticated. -->
+        <PackageReference Include="CK.Ng.AspNet.Auth" Version="0.31.3--ci.19" />
+        <!-- HttpCrisEndpoint: the registration travels on the authenticated Cris channel. -->
+        <PackageReference Include="CK.Ng.Cris.AspNet" Version="0.55.3--ci.7" />
+    </ItemGroup>
+
+</Project>

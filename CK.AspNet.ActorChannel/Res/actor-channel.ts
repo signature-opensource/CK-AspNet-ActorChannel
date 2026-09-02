@@ -28,8 +28,13 @@ const ACTOR_CHANNEL_TOPIC = 'CK.AspNet.ActorChannel';
  * whatever the server refuses at registration time (a banished user, typically) is refused again the
  * moment the client comes back, without any polling in between.
  *
- * It owns no socket. Starting and stopping this channel claims and releases the `SC` topic; the
- * connection stays up for the other features either way.
+ * It owns no socket. Starting and stopping this channel claims and releases the
+ * `CK.AspNet.ActorChannel` topic; the connection stays up for the other features either way.
+ *
+ * There is one instance per application and it is obtained by injection - CK.Ng.AspNet.ActorChannel
+ * provides it and keeps it bound to the authenticated actor. Do not construct one: a second instance
+ * would claim the same topic on the shared WSConnection, whose registration silently replaces the
+ * previous one, and the feature that registered first would stop receiving with nothing to show why.
  */
 export class ActorChannel {
   readonly #handlers = new Map<string, Array<ActorChannelMessageHandler>>();

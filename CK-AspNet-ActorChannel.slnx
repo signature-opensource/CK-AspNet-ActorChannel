@@ -5,5 +5,9 @@
     <File Path="Directory.Build.targets" />
     <File Path="nuget.config" />
   </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/Angular/CK.Ng.AspNet.ActorChannel.Tests/CK.Ng.AspNet.ActorChannel.Tests.csproj" />
+  </Folder>
   <Project Path="CK.AspNet.ActorChannel/CK.AspNet.ActorChannel.csproj" />
+  <Project Path="CK.Ng.AspNet.ActorChannel/CK.Ng.AspNet.ActorChannel.csproj" />
 </Solution>
