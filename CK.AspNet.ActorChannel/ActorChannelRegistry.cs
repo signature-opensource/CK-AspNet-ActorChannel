@@ -99,7 +99,10 @@ public sealed class ActorChannelRegistry : IRealObject, IActorChannelPush
         var message = CreateTypedMessage( type );
         foreach( var connectionId in connectionIds.Keys )
         {
-            await _channel.SendAsync( connectionId, Topic, message ).ConfigureAwait( false );
+            if( _channel.TryGetConnection( connectionId, out var connection ) )
+            {
+                await connection.WriteAsync( Topic, message ).ConfigureAwait( false );
+            }
         }
     }
 
