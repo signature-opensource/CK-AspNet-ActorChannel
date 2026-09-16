@@ -8,10 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CK.Cris.Auth" Version="0.43.4" />
-        <PackageReference Include="CK.Cris.Typescript" Version="0.55.5" />
-        <PackageReference Include="CK.AspNet.WebSocketChannel" Version="21.0.4" />
-        <PackageReference Include="CK.TS.AspNet.WebSocketChannel" Version="0.31.5" />
+        <PackageReference Include="CK.Cris.Auth" Version="0.44.0" />
+        <PackageReference Include="CK.Cris.Typescript" Version="0.55.6" />
+        <PackageReference Include="CK.AspNet.WebSocketChannel" Version="21.0.5" />
+        <PackageReference Include="CK.TS.AspNet.WebSocketChannel" Version="0.31.6" />
     </ItemGroup>
 
 </Project>
