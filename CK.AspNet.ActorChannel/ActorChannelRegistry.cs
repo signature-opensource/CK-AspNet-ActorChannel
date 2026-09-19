@@ -97,9 +97,13 @@ public sealed class ActorChannelRegistry : IRealObject, IActorChannelPush
         Throw.CheckNotNullOrWhiteSpaceArgument( type );
         if( !_byActor.TryGetValue( userId, out var connectionIds ) ) return;
         var message = CreateTypedMessage( type );
+        var envelope = WebSocketChannelEnvelope.Create( Topic, message );
         foreach( var connectionId in connectionIds.Keys )
         {
-            await _channel.SendAsync( connectionId, Topic, message ).ConfigureAwait( false );
+            if( _channel.TryGetConnection( connectionId, out var connection ) )
+            {
+                await connection.WriteAsync( envelope ).ConfigureAwait( false );
+            }
         }
     }
 
