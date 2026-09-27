@@ -14,7 +14,7 @@
     <!-- Generates the Angular jest setup (setupZoneTestEnv) and the appConfig the specs inject from. -->
     <PackageReference Include="CK.TS.Angular.Engine" Version="1.0.0" />
     <!-- Generates RegisterActorChannelCommand on the TypeScript side. -->
-    <PackageReference Include="CK.Cris.AspNet.Engine" Version="1.0.0" />
+    <PackageReference Include="CK.Cris.AspNet.Engine" Version="2.0.0-juliet.0.ci.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\CK.Ng.AspNet.ActorChannel\CK.Ng.AspNet.ActorChannel.csproj" />
