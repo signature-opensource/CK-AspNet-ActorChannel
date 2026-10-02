@@ -15,7 +15,7 @@
         <!-- NgAuthService: the channel binds an actor, so it has to know who is authenticated. -->
         <PackageReference Include="CK.Ng.AspNet.Auth" Version="1.0.1--ci.1" />
         <!-- HttpCrisEndpoint: the registration travels on the authenticated Cris channel. -->
-        <PackageReference Include="CK.Ng.Cris.AspNet" Version="1.0.1--ci.1" />
+        <PackageReference Include="CK.Ng.Cris.AspNet" Version="1.0.1--ci.2" />
     </ItemGroup>
 
 </Project>
