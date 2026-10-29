@@ -11,7 +11,7 @@ if ( process.env["VSCODE_INSPECTOR_OPTIONS"] ) jest.setTimeout( 30 * 60 * 1000 )
 const ACTOR_CHANNEL_TOPIC = 'CK.AspNet.ActorChannel';
 
 // Expected noise: appConfig brings the whole generated graph, so the app initializer of
-// CK.Ng.AspNet.Auth runs too and refreshes the authentication over HTTP. In jsdom that times out and
+// CK.Ng.Cris.AspNet.Authentication runs too and refreshes the authentication over HTTP. In jsdom that times out and
 // logs after the suite has finished ("Cannot log after tests are done", HTTP.Status.408). It belongs
 // to that package, not to these tests, and silencing it from here would mean stubbing AXIOS for
 // everyone - more fragile than the noise it removes.

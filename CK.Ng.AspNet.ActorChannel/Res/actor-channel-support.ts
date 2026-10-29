@@ -29,7 +29,7 @@ function bindActorChannelToAuthentication(): void {
     // application: reading the signal here is what re-claims the topic after a login and releases it
     // after a logout, without any feature having to care.
     effect( () => {
-        if ( authService.authenticationInfo().level >= AuthLevel.Normal ) channel.start();
+        if ( authService.level() >= AuthLevel.Normal ) channel.start();
         else void channel.stopAsync();
     } );
 }

@@ -12,7 +12,7 @@ message types it cares about.
 
 ```csharp
 [TypeScriptPackage]
-[Requires<ActorChannelPackage, NgWebSocketChannelPackage, CrisAspNetPackage, CK.Ng.AspNet.Auth.AspNetAuthPackage>]
+[Requires<ActorChannelPackage, NgWebSocketChannelPackage, CrisAspNetPackage, CK.Ng.Cris.AspNet.Authentication.NgCrisAuthenticationPackage>]
 [NgProviderImport( "inject", From = "@angular/core" )]
 [NgProviderImport( "ActorChannel, WSConnection, HttpCrisEndpoint" )]
 [NgProviderImport( "provideActorChannelSupport", From = "@local/ck-gen/CK/Ng/AspNet/ActorChannel/actor-channel-support" )]
@@ -59,7 +59,7 @@ import.
 The factory shows the two dependencies of the client. `WSConnection` is the shared socket, provided by
 `CK.Ng.AspNet.WebSocketChannel`, and is where messages arrive. `HttpCrisEndpoint` is the authenticated
 command channel, from `CK.Ng.Cris.AspNet`, and is how the registration is sent. The
-`AspNetAuthPackage` requirement is the third leg, and the csproj comment says why: *"NgAuthService:
+`NgCrisAuthenticationPackage` requirement is the third leg, and the csproj comment says why: *"NgAuthService:
 the channel binds an actor, so it has to know who is authenticated."*
 
 ## Binding and authentication
@@ -79,8 +79,8 @@ change reaching this channel.
 `provideActorChannelSupport()`. The `"#Support"` beside it is a source-name suffix: it is appended to
 the C# type name to give this second provider its own identifier,
 `CK.Ng.AspNet.ActorChannel.NgActorChannelPackage#Support`. Nothing requires it to be unique - the
-engine appends each provider line without checking - and `CK.Ng.Cris.AspNet.Auth` passes `"#Support"`
-while declaring a single `NgProvider`. Its consumer is the generated `exclude( sourceName )`, which
+engine appends each provider line without checking - and `CK.Ng.Cris.AspNet.Authentication` uses the
+same `"#Support"` suffix for its own support provider. Its consumer is the generated `exclude( sourceName )`, which
 removes every provider carrying that source.
 
 ## Requirements
@@ -93,7 +93,8 @@ removes every provider carrying that source.
 - `CK.Ng.AspNet.WebSocketChannel`, for `NgWebSocketChannelPackage` and the Angular provider of the
   socket. `WSConnection` itself is declared one layer down, in `CK.TS.AspNet.WebSocketChannel`.
 
-- `CK.Ng.AspNet.Auth`, for the authentication the binding follows.
+- `CK.Ng.Cris.AspNet.Authentication`, for the authentication the binding follows (the `level` signal of
+  `NgAuthService`).
 
 - `CK.Ng.Cris.AspNet`, for `CrisAspNetPackage` and its provider. `HttpCrisEndpoint` is emitted by the
   Cris TypeScript engine rather than shipped as a file.

@@ -21,7 +21,7 @@ namespace CK.Ng.AspNet.ActorChannel;
 /// </para>
 /// </summary>
 [TypeScriptPackage]
-[Requires<ActorChannelPackage, NgWebSocketChannelPackage, CrisAspNetPackage, CK.Ng.AspNet.Auth.AspNetAuthPackage>]
+[Requires<ActorChannelPackage, NgWebSocketChannelPackage, CrisAspNetPackage, CK.Ng.Cris.AspNet.Authentication.NgCrisAuthenticationPackage>]
 [NgProviderImport( "inject", From = "@angular/core" )]
 [NgProviderImport( "ActorChannel, WSConnection, HttpCrisEndpoint" )]
 [NgProviderImport( "provideActorChannelSupport", From = "@local/ck-gen/CK/Ng/AspNet/ActorChannel/actor-channel-support" )]

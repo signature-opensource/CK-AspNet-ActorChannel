@@ -188,8 +188,8 @@ one map, so subscribing there would add a handler per start.
 - `CK.AspNet.WebSocketChannel`, the shared channel this indexes. `WebSocketChannelManager` is taken in
   `StObjConstruct`.
 
-- `CK.Cris.Auth`, for the validation that makes the binding trustworthy, and for `ICommandAuthNormal`
-  which arrives through it.
+- `CK.Cris.Authentication`, for the validation that makes the binding trustworthy, and for
+  `ICommandAuthNormal` which arrives through it.
 
 - `CK.Cris.TypeScript`, spelled `CK.Cris.Typescript` in the csproj, and `CK.TS.AspNet.WebSocketChannel`,
   for the `WebSocketChannelPackage` this one requires and the TypeScript toolchain.
