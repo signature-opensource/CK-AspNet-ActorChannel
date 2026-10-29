@@ -13,9 +13,9 @@
         <PackageReference Include="CK.TS.Angular" Version="3.0.0-0.cris-auth.0.ci.10" />
         <PackageReference Include="CK.Ng.AspNet.WebSocketChannel" Version="3.0.0-0.cris-auth.0.ci.10" />
         <!-- NgAuthService: the channel binds an actor, so it has to know who is authenticated. -->
-        <PackageReference Include="CK.Ng.Cris.AspNet.Authentication" Version="3.0.0-0.cris-auth.0.ci.39" />
+        <PackageReference Include="CK.Ng.Cris.AspNet.Authentication" Version="3.0.0-0.cris-auth.0.ci.42" />
         <!-- HttpCrisEndpoint: the registration travels on the authenticated Cris channel. -->
-        <PackageReference Include="CK.Ng.Cris.AspNet" Version="3.0.0-0.cris-auth.0.ci.39" />
+        <PackageReference Include="CK.Ng.Cris.AspNet" Version="3.0.0-0.cris-auth.0.ci.42" />
     </ItemGroup>
 
 </Project>
