@@ -10,11 +10,9 @@ if ( process.env["VSCODE_INSPECTOR_OPTIONS"] ) jest.setTimeout( 30 * 60 * 1000 )
 /** Must stay in sync with ActorChannelRegistry.Topic. */
 const ACTOR_CHANNEL_TOPIC = 'CK.AspNet.ActorChannel';
 
-// Expected noise: appConfig brings the whole generated graph, so the app initializer of
-// CK.Ng.Cris.AspNet.Authentication runs too and refreshes the authentication over HTTP. In jsdom that times out and
-// logs after the suite has finished ("Cannot log after tests are done", HTTP.Status.408). It belongs
-// to that package, not to these tests, and silencing it from here would mean stubbing AXIOS for
-// everyone - more fragile than the noise it removes.
+// appConfig brings the whole generated graph, so the AuthService of CK.Ng.Cris.AspNet.Authentication is
+// created too: it hooks the HttpCrisEndpoint and refreshes its session through it. The CrisEndpointStub
+// below answers it with nothing: the application stays anonymous.
 
 /**
  * A WebSocket we drive by hand: WSConnection reads the constructor from the global, so replacing it is
@@ -68,6 +66,12 @@ class CrisEndpointStub {
         this.sent.push( command );
         return Promise.resolve( undefined );
     }
+
+    // What the AuthService uses (its session refresh): not recorded, it doesn't concern the channel.
+    addHook( _hook: unknown ): void { }
+    removeHook( _hook: unknown ): boolean { return false; }
+    sendAsync( _command: unknown ): Promise<{ result: undefined }> { return Promise.resolve( { result: undefined } ); }
+    updateAmbientValuesAsync(): Promise<void> { return Promise.resolve(); }
 }
 
 // Two independent features, each caring about its own message type. This is the shape the shared
