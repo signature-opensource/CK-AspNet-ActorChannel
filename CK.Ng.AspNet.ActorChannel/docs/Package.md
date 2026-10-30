@@ -1,11 +1,4 @@
-The Angular half of the actor channel: provides the one `ActorChannel` of the application as an
-injectable and starts it while a user is authenticated.
-
-Referencing the package contributes the Angular providers - there is no module to import and no
-provider array to edit. A feature injects the channel and registers the message types it handles.
-
-It must never construct one. Two started instances would both claim the channel topic on the shared
-socket, the second registration silently replacing the first, and the feature that registered first
-would simply stop receiving with nothing to show why.
-
-Binding follows the authentication level: an anonymous visitor has no actor to bind.
+**Deprecated, without replacement.** This package is a tombstone: a project that depends on it fails to build
+(`CKDEPRECATED`). The push to the connected actors is removed (it needs its own design across the parties of a
+distributed application): remove the reference. The generic WebSocket channel stays:
+[CK.AspNet.WebSocketChannel](https://github.com/signature-opensource/CK-AspNet/blob/stable/CK.AspNet.WebSocketChannel/README.md).

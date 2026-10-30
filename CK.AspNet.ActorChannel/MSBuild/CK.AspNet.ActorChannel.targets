@@ -1,0 +1,6 @@
+<Project>
+  <Target Name="CK_AspNet_ActorChannel_IsDeprecated" BeforeTargets="ResolveAssemblyReferences">
+    <Error Code="CKDEPRECATED"
+           Text="Package 'CK.AspNet.ActorChannel' is deprecated, without replacement: the push to the connected actors is removed (tracking the live connections of the users across the parties of a distributed application needs its own design). Remove the reference (and the push of your features). The generic WebSocket channel stays: see https://github.com/signature-opensource/CK-AspNet/blob/stable/CK.AspNet.WebSocketChannel/README.md." />
+  </Target>
+</Project>
